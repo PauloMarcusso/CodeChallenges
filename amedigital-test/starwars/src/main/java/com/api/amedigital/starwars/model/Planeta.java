@@ -3,11 +3,17 @@ package com.api.amedigital.starwars.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 import lombok.Data;
 
 @Data
-public class Planet {
+@Entity
+public class Planeta {
 
+	@Id
 	String name;
 	String diameter;
 	String rotation_period;
@@ -18,8 +24,11 @@ public class Planet {
 	String terrain;
 	String surface_water;
 	String url;
-	String created;
+	
+	@ElementCollection(targetClass=String.class)
 	List<String> films = new ArrayList<String>();
+	
+	@ElementCollection(targetClass=String.class)
 	List<String> residents = new ArrayList<String>();
 	
 }

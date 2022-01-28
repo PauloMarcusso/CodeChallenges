@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.api.amedigital.starwars.model.Planet;
+import com.api.amedigital.starwars.model.Planeta;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest
@@ -26,7 +26,7 @@ public class JustATest {
 		HttpClient client = HttpClient.newBuilder().build();
 		HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://swapi.dev/api/planets/1/")).build();
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-		Planet planet = objectMapper.readValue(response.body(), Planet.class);
+		Planeta planet = objectMapper.readValue(response.body(), Planeta.class);
 		
 		System.out.println(planet);
 		Assertions.assertEquals("Tatooine", planet.getName());
