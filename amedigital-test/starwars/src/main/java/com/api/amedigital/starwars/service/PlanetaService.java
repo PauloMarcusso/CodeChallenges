@@ -1,6 +1,10 @@
 package com.api.amedigital.starwars.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,11 +25,27 @@ public class PlanetaService {
 		planeta.setClimate(planetaDto.getClima());
 		planeta.setName(planetaDto.getNome());
 		planeta.setTerrain(planetaDto.getTerreno());
-		
+
 		planetRepository.saveAndFlush(planeta);
-		
+
 		PlanetaDTO novo = new PlanetaDTO(planeta);
-		
+
 		return novo;
+	}
+
+	public Page<PlanetaDTO> listar(Pageable pageable) {
+		Page<Planeta> planetas = planetRepository.findAll(pageable);
+		Page<PlanetaDTO> page = planetas.map(p -> new PlanetaDTO(p));
+		return page;
+	}
+
+	public PlanetaDTO buscarPorNome(String nome) {
+		return planetRepository.findByName(nome);
+	}
+
+	@Transactional
+	public void deletar(String nome) {
+		Planeta planeta = planetRepository.findById(nome).get();
+		planetRepository.delete(planeta);		
 	}
 }
