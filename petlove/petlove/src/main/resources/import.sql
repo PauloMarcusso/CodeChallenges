@@ -8,7 +8,7 @@ insert into pessoa (id, nome, documento, data_nascimento) values (7, 'Elvis Pres
 
 insert into animal(id, nome, custo_mensal, tipo, pessoa_id) values (1, 'Pé de Pano', 199.99, 'Cavalo', 1);
 insert into animal(id, nome, custo_mensal, tipo, pessoa_id) values (2, 'Rex', 99.99, 'Cachorro', 2);
-insert into animal(id, nome, custo_mensal, tipo, pessoa_id) values (3, 'Ajudante do Papai Noel', 99.99, 'Cachorro', 3);
+insert into animal(id, nome, custo_mensal, tipo, pessoa_id) values (3, 'Ajudante do Papai Noel', 199.99, 'Cachorro', 3);
 insert into animal(id, nome, custo_mensal, tipo, pessoa_id) values (4, 'Rex', 103.99, 'Papagaio', 4);
 insert into animal(id, nome, custo_mensal, tipo, pessoa_id) values (5, 'Flora', 103.99, 'Lhama', 5);
 insert into animal(id, nome, custo_mensal, tipo, pessoa_id) values (6, 'Dino', 177.99, 'Iguana', 6);

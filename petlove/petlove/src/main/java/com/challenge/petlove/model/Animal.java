@@ -3,11 +3,14 @@ package com.challenge.petlove.model;
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Animal {
@@ -19,9 +22,12 @@ public class Animal {
 	private BigDecimal custoMensal;
 	private String tipo;
 	
-	@ManyToOne
+	@JsonIgnoreProperties
+	@ManyToOne()
 	@JoinColumn(name = "pessoa_id")
 	private Pessoa pessoa;
+	
+	public Animal() {}
 
 	public Animal(String nome, BigDecimal custoMensal, String tipo) {
 		super();
@@ -69,4 +75,12 @@ public class Animal {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+
+	@Override
+	public String toString() {
+		return "Animal [id=" + id + ", nome=" + nome + ", custoMensal=" + custoMensal + ", tipo=" + tipo + ", pessoa="
+				+ pessoa + "]";
+	}
+	
+	
 }

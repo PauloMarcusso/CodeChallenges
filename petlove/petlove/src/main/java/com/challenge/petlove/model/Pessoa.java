@@ -29,6 +29,8 @@ public class Pessoa {
 	@OneToMany
 	private List<Animal> animais = new ArrayList<>();
 	
+	public Pessoa() {}
+	
 	Pessoa(String nome, String documento, LocalDate dataNascimento) {
 		super();
 		this.nome = nome;
