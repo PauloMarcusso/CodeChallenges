@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Pessoa {
 
@@ -25,8 +27,9 @@ public class Pessoa {
 	@DateTimeFormat(pattern = "dd/MM/yy")
 	private LocalDate dataNascimento;
 	
+	@JsonIgnoreProperties("pessoa")
 	@Column(name = "animais")
-	@OneToMany
+	@OneToMany(mappedBy = "pessoa")
 	private List<Animal> animais = new ArrayList<>();
 	
 	public Pessoa() {}

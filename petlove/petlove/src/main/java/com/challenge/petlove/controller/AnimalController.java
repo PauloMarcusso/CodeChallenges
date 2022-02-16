@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,8 +24,19 @@ public class AnimalController {
 		return animalService.findAll();
 	}
 	
-	@GetMapping("/{nome}")
-	public BigDecimal custoMedio(@PathVariable String nome) {
+	@GetMapping("/custo-medio")
+	public BigDecimal custoMedio(@RequestParam(required = false) String nome) {
 		return animalService.calcularCustoMedio(nome);
 	}
+	
+	@GetMapping("/quantidade-tipo")
+	public Integer quantidadePorTipo(@RequestParam(required = true) String tipo) {
+		return animalService.buscaQuantidadePorTipo(tipo);
+	}
+	
+	@GetMapping("/donos")
+	public List<String> buscaDonoPorTipo(@RequestParam(required = true) String tipo){
+		return animalService.buscaDonoPorTipo(tipo);
+	}
+	
 }
